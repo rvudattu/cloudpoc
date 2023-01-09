@@ -12,7 +12,7 @@ env:
   PROJECT_ID: ${{ secrets.RUN_PROJECT }}
   RUN_REGION: us-east4
 #   if: github.head_ref == 'prod';
-  SERVICE_NAME: oms-django-git-poc-${{ github.ref }}
+  SERVICE_NAME: oms-django-git-poc-${{ github.ref_name }}
 
 
 jobs:
