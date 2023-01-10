@@ -11,7 +11,6 @@ on:
 env:
   PROJECT_ID: ${{ secrets.RUN_PROJECT }}
   RUN_REGION: us-east4
-
   SERVICE_NAME: oms-django-git-poc-${{ github.ref_name }}
 
 
