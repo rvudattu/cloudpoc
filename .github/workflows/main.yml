@@ -4,8 +4,8 @@ name: git-django-cloud-poc
 on:
   push:
     branches: [dev, prod, uat]
-  pull_request:
-    branches: [dev, prod, uat]
+#   pull_request:
+#     branches: [dev, prod, uat]
 
 
 env:
