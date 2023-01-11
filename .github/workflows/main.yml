@@ -7,6 +7,9 @@ on:
 #   pull_request:
 #     branches: [dev, prod, uat]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 env:
   PROJECT_ID: ${{ secrets.RUN_PROJECT }}
