@@ -79,17 +79,7 @@ jobs:
 #       env:
 #           REGISTRY_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
 
-    - name: Rollback Release
-      if: failure() && steps.create_release.outputs.id != ''
-      uses: author/action-rollback@stable
-      with:
-          # Using a known release ID
-          id: ${{ steps.create_release.id }}
-          # Using a tag name
-#           tag: ${{ steps.autotagger.outputs.tagname }}
-          tag: 63
-      env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
           
 #     - name: Create Release
 #       id: create_release
@@ -136,3 +126,15 @@ jobs:
           --image gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}:${{  github.sha }} \
           --platform "managed" \
           --allow-unauthenticated
+          
+    - name: Rollback Release
+      if: failure() && steps.create_release.outputs.id != ''
+      uses: author/action-rollback@stable
+      with:
+          # Using a known release ID
+          id: ${{ steps.create_release.id }}
+          # Using a tag name
+#           tag: ${{ steps.autotagger.outputs.tagname }}
+          tag: 63
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
