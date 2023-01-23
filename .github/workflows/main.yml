@@ -52,12 +52,12 @@ jobs:
           draft: false
           prerelease: true
 
-    - name: Publish
-      id: publish_npm
-      if: steps.autotagger.outputs.tagname != ''
-      uses: author/action-publish@stable
-      env:
-          REGISTRY_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
+#     - name: Publish
+#       id: publish_npm
+#       if: steps.autotagger.outputs.tagname != ''
+#       uses: author/action-publish@stable
+#       env:
+#           REGISTRY_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
 
     - name: Rollback Release
       if: failure() && steps.create_release.outputs.id != ''
