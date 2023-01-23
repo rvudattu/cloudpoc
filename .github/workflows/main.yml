@@ -38,19 +38,39 @@ jobs:
       uses: butlerlogic/action-autotag@stable
       with:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-      
-    - name: Release
+          
+          
+    - name: Create Release
       id: create_release
-      if: steps.autotagger.outputs.tagname != ''
-      uses: actions/create-release@v1.0.0
+      uses: actions/create-release@v1
       env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
       with:
-          tag_name: ${{ steps.autotagger.outputs.tagname }}
-          release_name: Version ${{ steps.autotagger.outputs.version }}
-          body: ${{ steps.autotagger.outputs.tagmessage }}
+#           tag_name: ${{ github.ref }}run_number
+#           release_name: Release ${{ github.ref }}
+          tag_name: ${{ github.run_number }}
+          release_name: Release ${{ github.run_number }}
+          body: |
+            Changes in this Release
+            - First Change
+            - Second Change
           draft: false
-          prerelease: true
+          prerelease: false
+
+
+
+#     - name: Release
+#       id: create_release
+#       if: steps.autotagger.outputs.tagname != ''
+#       uses: actions/create-release@v1.0.0
+#       env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#       with:
+#           tag_name: ${{ steps.autotagger.outputs.tagname }}
+#           release_name: Version ${{ steps.autotagger.outputs.version }}
+#           body: ${{ steps.autotagger.outputs.tagmessage }}
+#           draft: false
+#           prerelease: true
 
 #     - name: Publish
 #       id: publish_npm
