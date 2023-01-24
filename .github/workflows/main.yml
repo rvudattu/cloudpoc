@@ -1,3 +1,4 @@
+# Name of the workflow we are creating.
 name: git-django-cloud-poc
 
 
@@ -6,6 +7,7 @@ on:
     branches: [dev, prod, uat]
 #   pull_request:
 #     branches: [dev, prod, uat]
+
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -32,8 +34,26 @@ jobs:
         python-version: '3.7'
 
     - uses: actions/checkout@v3
-
-        
+  
+#version-1 generating release code.
+          
+#     - name: Create Release
+#       id: create_release
+#       uses: actions/create-release@v1
+#       env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+#       with:
+# #           tag_name: ${{ github.ref }}run_number
+# #           release_name: Release ${{ github.ref }}
+#           tag_name: ${{ github.run_number }}
+#           release_name: Release ${{ github.run_number }}
+#           body: |
+#             Changes in this Release
+#             - First Change
+#             - Second Change
+#           draft: false
+#           prerelease: false
+          
     # Setup gcloud CLI
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@v0
@@ -62,3 +82,57 @@ jobs:
           --image gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}:${{  github.sha }} \
           --platform "managed" \
           --allow-unauthenticated
+        
+        
+#     - name: Tag
+#       id: autotagger
+#       uses: butlerlogic/action-autotag@stable
+#       with:
+#           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      
+#     - name: Release
+#       id: create_release
+# #       if: steps.autotagger.outputs.tagname != ''
+#       uses: actions/create-release@v1.0.0
+#       env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#       with:
+#           tag_name: ${{ github.run_number }}
+#           release_name: Version ${{ github.run_number }}
+#           body: |
+#              - 'CI/CD Auto Release'
+#           draft: false
+#           prerelease: false
+
+#     - name: Publish
+#       id: publish_npm
+#       if: steps.autotagger.outputs.tagname != ''
+#       uses: author/action-publish@stable
+#       env:
+#           REGISTRY_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
+
+#     - name: Rollback Release
+#       if: failure() && steps.create_release.outputs.id != ''
+#       uses: author/action-rollback@stable
+#       with:
+#           # Using a known release ID
+#           id: ${{ steps.create_release.id }}
+#           # Using a tag name
+#           tag: '69'
+#       env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+          
+#     - name: Rollback Release
+#       if: failure() 
+#       uses: author/action-rollback@stable
+#       with:
+#           # Using a known release ID
+          
+# #           id: ${{ steps.create_release.id }}
+#           id: Release 69
+#           # Using a tag name
+# #           tag: ${{ steps.autotagger.outputs.tagname }}
+#           tag: 69
+#       env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -24,9 +24,10 @@ def count_cur_sim(request):
         # Added a comment to Main by Pgarikap user.
         # Added a comment to Main by rvudattu user.
         # Added a comment on 11-01-2023_14:43
-        # Added a comment from uat on 11-01-2022_19:28
+
         
-        return JsonResponse({"status": "success", "data": "Response version-1.1"})
+        return JsonResponse({"status": "success", "data": "Response version-1.9"})
+
 
     except Exception as e:
         return JsonResponse({"status": "failed", "msg": str(e)})
