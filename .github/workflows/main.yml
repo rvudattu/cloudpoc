@@ -135,6 +135,6 @@ jobs:
 #           id: ${{ steps.create_release.id }}
           # Using a tag name
 #           tag: ${{ steps.autotagger.outputs.tagname }}
-          tag: 63
+          tag: 62
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
