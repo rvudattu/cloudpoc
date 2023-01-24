@@ -132,9 +132,12 @@ jobs:
       uses: author/action-rollback@stable
       with:
           # Using a known release ID
+          
 #           id: ${{ steps.create_release.id }}
+          id: Release 68
           # Using a tag name
 #           tag: ${{ steps.autotagger.outputs.tagname }}
-          tag: 62
+          tag: 68
+          delete_orphan_tag: false
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
