@@ -90,19 +90,19 @@ jobs:
 #       with:
 #           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
       
-    - name: Release
-      id: create_release
-#       if: steps.autotagger.outputs.tagname != ''
-      uses: actions/create-release@v1.0.0
-      env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-          tag_name: ${{ github.run_number }}
-          release_name: Version ${{ github.run_number }}
-          body: |
-             - 'CI/CD Auto Release'
-          draft: false
-          prerelease: false
+#     - name: Release
+#       id: create_release
+# #       if: steps.autotagger.outputs.tagname != ''
+#       uses: actions/create-release@v1.0.0
+#       env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#       with:
+#           tag_name: ${{ github.run_number }}
+#           release_name: Version ${{ github.run_number }}
+#           body: |
+#              - 'CI/CD Auto Release'
+#           draft: false
+#           prerelease: false
 
 #     - name: Publish
 #       id: publish_npm
