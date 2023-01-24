@@ -97,7 +97,7 @@ jobs:
       with:
           tag_name: ${{ github.run_number }}
           release_name: Version ${{ github.run_number }}
-          body: ${{ CI/CD Auto Release }}
+          body: 'CI/CD Auto Release'
           draft: false
           prerelease: false
 
