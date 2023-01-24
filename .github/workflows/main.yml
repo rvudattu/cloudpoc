@@ -1,3 +1,4 @@
+# Name of the workflow we are creating.
 name: git-django-cloud-poc
 
 
@@ -6,6 +7,7 @@ on:
     branches: [dev, prod, uat]
 #   pull_request:
 #     branches: [dev, prod, uat]
+
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -109,16 +111,16 @@ jobs:
 #       env:
 #           REGISTRY_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
 
-    - name: Rollback Release
-      if: failure() && steps.create_release.outputs.id != ''
-      uses: author/action-rollback@stable
-      with:
-          # Using a known release ID
-          id: ${{ steps.create_release.id }}
-          # Using a tag name
-          tag: '69'
-      env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#     - name: Rollback Release
+#       if: failure() && steps.create_release.outputs.id != ''
+#       uses: author/action-rollback@stable
+#       with:
+#           # Using a known release ID
+#           id: ${{ steps.create_release.id }}
+#           # Using a tag name
+#           tag: '69'
+#       env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
           
 #     - name: Rollback Release
