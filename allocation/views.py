@@ -25,7 +25,7 @@ def count_cur_sim(request):
         # Added a comment to Main by rvudattu user.
         # Added a comment on 11-01-2023_14:43
 
-        
+        print("Input payload------------>", request.data)
         return JsonResponse({"status": "success", "data": request.data})
 
 
