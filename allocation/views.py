@@ -5,7 +5,7 @@ from django.http.response import JsonResponse
 from rest_framework.decorators import api_view
 import pandas as pd
 import cx_Oracle
-
+import logging
 # Create your views here.
 
 
@@ -26,6 +26,7 @@ def count_cur_sim(request):
         # Added a comment on 11-01-2023_14:43
 
         print("Input payload------------>", request.data)
+        logging.info(f"Input payload------------> {request.data}")
         return JsonResponse({"status": "success", "data": request.data})
 
 
