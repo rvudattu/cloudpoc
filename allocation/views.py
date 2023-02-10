@@ -27,7 +27,7 @@ def count_cur_sim(request):
 
 #         print("Input payload------------>", request.data)
 #         logging.info(f"Input payload------------> {request.data}")
-        return JsonResponse({"status": "success", "data": "Response version-1.13"})
+        return JsonResponse({"status": "success", "data": "Response version-1.14"})
 
 
 
