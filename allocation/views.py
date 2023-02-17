@@ -5,6 +5,7 @@ from django.http.response import JsonResponse
 from rest_framework.decorators import api_view
 import pandas as pd
 import cx_Oracle
+import json
 
 # Create your views here.
 
