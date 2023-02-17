@@ -25,7 +25,7 @@ def count_cur_sim(request):
         # Added a comment to Main by rvudattu user.
         # Added a comment on 11-01-2023_14:43
         # Added a comment from uat on 11-01-2022_19:28
-        
+        print('request', request.get_json())
         return JsonResponse({"status": "success", "data": "Response version-1.0"})
 
     except Exception as e:
