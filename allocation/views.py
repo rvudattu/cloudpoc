@@ -30,7 +30,7 @@ def count_cur_sim(request):
 #         request = request.data
         data = json.loads(request.body.decode("utf-8"))
         print('request', data)
-        return JsonResponse({"status": "success", "data": "Response version-1.0"})
+        return JsonResponse({"status": "success", "data": data})
 
     except Exception as e:
         return JsonResponse({"status": "failed", "msg": str(e)})
