@@ -9,6 +9,10 @@ import json
 import logging
 # Create your views here.
 
+import google.cloud.logging
+client = google.cloud.logging.Client()
+client.setup_logging()
+
 
 
 @api_view(['POST'])
