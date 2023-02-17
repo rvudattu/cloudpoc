@@ -6,7 +6,7 @@ from rest_framework.decorators import api_view
 import pandas as pd
 import cx_Oracle
 import json
-
+import logging
 # Create your views here.
 
 
@@ -29,6 +29,7 @@ def count_cur_sim(request):
 #         print('request', request.get_json())
 #         request = request.data
         data = json.loads(request.body.decode("utf-8"))
+        logging.info(f"request.........{data}")
         print('request', data)
         return JsonResponse({"status": "success", "data": data})
 
