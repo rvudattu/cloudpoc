@@ -37,6 +37,7 @@ def count_cur_sim(request):
         payload = base64.b64decode(data['message']['data']) 
         logging.info(f"request.........{data}")
         logging.info(f"payload.........{json.loads(payload)}")
+        logging.info(f"type_payload.........{type(json.loads(payload)})")
 #         logging.info(f"payload.........{str(payload)}")
 #         logging.info(f"payload _1 .........{json.loads(bt_str.decode('utf8').replace("'", '"')))
 #         print('request', data)
