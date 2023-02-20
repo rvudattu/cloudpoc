@@ -7,6 +7,7 @@ import pandas as pd
 import cx_Oracle
 import json
 import logging
+import base64
 # Create your views here.
 
 import google.cloud.logging
@@ -33,8 +34,10 @@ def count_cur_sim(request):
 #         print('request', request.get_json())
 #         request = request.data
         data = json.loads(request.body.decode("utf-8"))
+        payload = base64.b64decode(data['message']['data']) 
         logging.info(f"request.........{data}")
-        print('request', data)
+        logging.info(f"payload.........{payload}")
+#         print('request', data)
         return JsonResponse({"status": "success", "data": data})
 
     except Exception as e:
